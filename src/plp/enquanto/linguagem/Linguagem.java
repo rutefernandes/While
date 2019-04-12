@@ -62,6 +62,7 @@ public interface Linguagem {
 				senao.execute();
 		}
 	}
+	
 
 	Skip skip = new Skip();
 	class Skip implements Comando {
@@ -99,6 +100,20 @@ public interface Linguagem {
 			}
 		}
 	}
+	
+	class Para implements Comando {
+		private Bool condicao;
+		private Comando faca;
+		private Expressao exp;
+
+
+
+		@Override
+		public void execute() {
+				//TO DO
+		}
+	}
+	
 
 	class Exiba implements Comando {
 		public Exiba(String texto) {
