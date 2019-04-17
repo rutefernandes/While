@@ -154,12 +154,14 @@ public interface Linguagem {
 	}
 	
 	class Para implements Comando {
+		private Id id;
 		private Expressao de;
 		private Expressao ate;
-		private Expressao passo;
+		private Inteiro passo;
 		private Comando faca;
 			
-		public Para(Expressao de, Expressao ate, Expressao passo, Comando faca) {
+		public Para(Id id, Expressao de, Expressao ate, Inteiro passo, Comando faca) {
+			this.id = id;
 			this.de = de;
 			this.ate = ate;
 			this.passo = passo;
@@ -169,6 +171,7 @@ public interface Linguagem {
 		@Override
 		public void execute() {
 			for (int i = de.getValor(); i < ate.getValor(); i += passo.getValor()) {
+				ambiente.put(id.id, i);
 				faca.execute();
 			}
 		}
@@ -326,6 +329,10 @@ public interface Linguagem {
 
 		@Override
 		public boolean getValor() {
+
+			System.out.println("e" + esq.getValor());
+			System.out.println("d" + dir.getValor());
+			System.out.println(esq.getValor() == dir.getValor());
 			return esq.getValor() == dir.getValor();
 		}
 
