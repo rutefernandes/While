@@ -1,0 +1,3 @@
+  soma(a,b) = a + b;
+  exiba "";
+  escreva soma(2,3)

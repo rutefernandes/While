@@ -29,7 +29,7 @@ public class Principal {
 	}
 
 	public static void main(String... args) throws IOException {
-		final ParseTree tree = parse("teste.while");
+		final ParseTree tree = parse("testes/testeFun.while");
 		final ParseTreeWalker walker = new ParseTreeWalker();
 		final MeuListener listener = new MeuListener();
 		walker.walk(listener, tree);

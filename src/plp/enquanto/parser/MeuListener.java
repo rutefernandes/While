@@ -80,6 +80,29 @@ public class MeuListener extends EnquantoBaseListener {
 		final Comando senao = (Comando) getValue(ctx.comando(ctx.comando().size() - 1));
 		setValue(ctx, new Se(condicao, entao, senao, senaoses));
 	}
+	
+	@Override
+	public void exitDefFuncao(final EnquantoParser.DefFuncaoContext ctx) {
+		final Id nome = new Id(ctx.ID(0).getText());
+		final List<Id> parametros = new ArrayList<Id>();
+		for (int i = 1; i < ctx.ID().size(); i++) {
+			parametros.add(new Id(ctx.ID(i).getText()));
+		}
+		final Expressao expressao = (Expressao) getValue(ctx.expressao());
+		
+		setValue(ctx, new DefFuncao(nome, parametros, expressao));
+	}
+	
+	@Override
+	public void exitChamadaFuncao(final EnquantoParser.ChamadaFuncaoContext ctx) {
+		final Id nome = new Id(ctx.ID().getText());
+		final List<Expressao> valores = new ArrayList<>();
+		for (int i = 0; i < ctx.expressao().size(); i++) {
+			valores.add((Expressao) getValue(ctx.expressao(i)));
+		}
+		
+		setValue(ctx, new ChamadaFuncao(nome, valores));
+	}
 
 	@Override
 	public void exitInteiro(final EnquantoParser.InteiroContext ctx) {

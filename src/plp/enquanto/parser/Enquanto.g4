@@ -12,6 +12,7 @@ comando: ID ':=' expressao                          # atribuicao
        | 'escolha' ID ('caso' expressao ':' comando )*? 'outro' ':' comando             # escolha
        | 'exiba' Texto                              # exiba
        | 'escreva' expressao                        # escreva
+	   | ID '(' (ID (',' ID)*)? ')' '=' expressao										# defFuncao
        | '{' seqComando '}'                         # bloco
        ;
 
@@ -23,6 +24,7 @@ expressao: INT                                      # inteiro
          | expressao '-' expressao                  # opBin
          | expressao '/' expressao                  # opBin
          | expressao '^' expressao                  # opBin
+         | ID '(' (expressao (',' expressao)*)? ')'	# chamadaFuncao
          | '(' expressao ')'                        # expPar
          ;
 

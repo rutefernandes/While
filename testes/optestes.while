@@ -1,0 +1,5 @@
+se falso ou falso entao
+	exiba "ywah"
+senao
+	exiba "mua"
+

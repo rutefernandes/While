@@ -1,0 +1,5 @@
+nota := leia;
+se nota=6 ou nota=7 entao
+  exiba "Aprovado"
+senao
+  exiba "Reprovado"
