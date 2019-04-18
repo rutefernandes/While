@@ -77,7 +77,7 @@ public class MeuListener extends EnquantoBaseListener {
 					);
 		}
 		final Comando entao = (Comando) getValue(ctx.comando(0));
-		final Comando senao = (Comando) getValue(ctx.comando(1));
+		final Comando senao = (Comando) getValue(ctx.comando(ctx.comando().size() - 1));
 		setValue(ctx, new Se(condicao, entao, senao, senaoses));
 	}
 
